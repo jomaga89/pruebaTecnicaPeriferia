@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+# Carpeta de trabajo
+WORKDIR /app
+
+# Archivos de dependencias
+COPY package*.json ./
+
+# Instalar dependencias
+RUN npm install
+
+COPY . .
+
+# 4000 para auth, 4001 para posts
+EXPOSE 4001
+
+# Arrancar
+CMD ["npm", "run dev"]
