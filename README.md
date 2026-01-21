@@ -16,7 +16,6 @@ Este proyecto es una aplicación de microservicios que permite el registro, logi
 - [x] **Seeder Dinámico:** El servicio de Posts genera automáticamente un post inicial por cada usuario existente en Auth (sin duplicados).
 - [x] **Swagger:** Documentación interactiva disponible en cada microservicio.
 - [x] **Pruebas Unitarias:** Cobertura con Jest (Backend) y Vitest (Frontend).
-- [x] **Modo Oscuro:** Implementación persistente con Tailwind CSS.
 - [x] **K8s:** Despliegue de base de datos y servicios en clúster.
 
 ## 📦 Instalación y Uso
@@ -39,6 +38,6 @@ Frontend,NodePort,80,30002
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <tu-url-de-github>
+git clone https://github.com/jomaga89/pruebaTecnicaPeriferia
 cd testBackend-periferia
 ```
