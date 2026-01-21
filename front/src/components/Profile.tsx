@@ -3,13 +3,14 @@ import { useAuthStore } from "../store/useAuthStore";
 
 const Profile: React.FC = () => {
   const user = useAuthStore((state) => state.user);
+
+  if (!user) return null;
+
   const fechaNac = Intl.DateTimeFormat("es-ES", {
     month: "long",
     day: "numeric",
     year: "numeric",
-  }).format(new Date(user?.fechaNacimiento));
-
-  if (!user) return null;
+  }).format(new Date(user.fechaNacimiento));
 
   return (
     <div className="card" style={{ textAlign: "center", marginBottom: "20px" }}>

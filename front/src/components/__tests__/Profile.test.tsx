@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import Profile from "../Profile";
 import { useAuthStore } from "../../store/useAuthStore";
 
@@ -7,15 +7,23 @@ import { useAuthStore } from "../../store/useAuthStore";
 vi.mock("../../store/useAuthStore");
 
 describe("Componente Profile", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("debe mostrar el nombre y el alias del usuario correctamente", () => {
-    // Simulamos que hay un usuario logueado
-    (useAuthStore as any).mockReturnValue({
+    // Crear un mock que se comporte como el selector de Zustand
+    const mockStore = {
       user: {
         nombres: "Diego",
         apellidos: "Pérez",
         alias: "diego123",
         fechaNacimiento: "1990-01-01",
       },
+    };
+
+    (useAuthStore as any).mockImplementation((selector: any) => {
+      return selector(mockStore);
     });
 
     render(<Profile />);
@@ -26,7 +34,15 @@ describe("Componente Profile", () => {
   });
 
   it("no debe renderizar nada si no hay usuario", () => {
-    (useAuthStore as any).mockReturnValue({ user: null });
+    // Mock sin usuario
+    const mockStore = {
+      user: null,
+    };
+
+    (useAuthStore as any).mockImplementation((selector: any) => {
+      return selector(mockStore);
+    });
+
     const { container } = render(<Profile />);
     expect(container.firstChild).toBeNull();
   });

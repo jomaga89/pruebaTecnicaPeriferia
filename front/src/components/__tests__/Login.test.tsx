@@ -15,7 +15,7 @@ describe("Flujo de Autenticación", () => {
 
   it("debe cambiar entre Login y Registro al hacer click en el botón", () => {
     render(<Auth />);
-    const toggleBtn = screen.getByText(/¿No tienes cuenta?/i);
+    const toggleBtn = screen.getByText(/Registro nuevo aquí/i);
 
     fireEvent.click(toggleBtn);
 
