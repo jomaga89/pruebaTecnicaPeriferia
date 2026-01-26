@@ -12,7 +12,7 @@ const router = Router();
  *     summary: Obtener publicaciones
  *     responses:
  *       '200':
- *         description: Lista de posts ordenado por decha de creacion descendente
+ *         description: Lista de posts ordenado por fecha de creacion descendente
  *   post:
  *     tags:
  *       - Posts
